@@ -1,7 +1,5 @@
 package sk_projekat1;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class StorageTester {
@@ -51,15 +49,16 @@ public class StorageTester {
                                 System.out.println("If you want to create a folder in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The Folder Name' and 'The Folder Relative Path'  separated by a space.");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
                                     break;
                                 }
 
-                                if (st.createFolder(inLineSplit[0], inLineSplit[1]))
+                                if (st.createFolder(inLineSplit[0], inLineSplit[1])) {
                                     System.out.println("Folder created successfully.");
+                                }
 
                                 break;
                             }
@@ -70,27 +69,26 @@ public class StorageTester {
                                 System.out.println("If you want to create a file in the  subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The File Name' and 'The File Relative Path' separated by a space.");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
                                     break;
                                 }
 
-                                if (st.createFile(inLineSplit[0], inLineSplit[1]))
+                                if (st.createFile(inLineSplit[0], inLineSplit[1])) {
                                     System.out.println("File created successfully.");
+                                }
 
                                 break;
                             }
                             break;
                         case "3":
                             while (true) {
-                                System.out.println("If you want to move a file located in the root, type Root relative path as '.'");
-                                System.out.println("If you want to move a file in the root, type Root relative path as '.'");
-                                System.out.println("If you want to move a file between the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("If you want to move a file , type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The OLD File Relative Path' and 'The New File Relative Path' separated by a space.");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
@@ -105,11 +103,11 @@ public class StorageTester {
                             break;
                         case "4":
                             while (true) {
-                                System.out.println("If you want to rename a file object located in the root, type Root relative path as '.'");
+                                System.out.println("If you want to rename the root, type Root relative path as '.'");
                                 System.out.println("If you want to rename a file object located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The New Name' and 'The Relative Path' separated by a space.");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
@@ -124,11 +122,10 @@ public class StorageTester {
                             break;
                         case "5":
                             while (true) {
-                                System.out.println("If you want to delete a file object located in the root, type Root relative path as '.'");
-                                System.out.println("If you want to delete a file object located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("If you want to delete a file object, type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The File Object Relative Path' ");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 1) {
                                     System.out.println("Invalid argument, try again.");
@@ -145,10 +142,10 @@ public class StorageTester {
                             while (true) {
                                 System.out.println("If you want to import a files, type File absolute path. If you want multiple files to import separate with ','");
                                 System.out.println("If you want to import a files in the root, type Root relative path as '.'");
-                                System.out.println("If you want to import a file in storage located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("If you want to import a file in root located somewhere in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
                                 System.out.println("Enter 'The File/s Absolute Path' and 'Relative Path in Storage'");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
@@ -166,9 +163,9 @@ public class StorageTester {
                                 System.out.println("If you want to export a file, type absolute path where you want to export your file");
                                 System.out.println("If the file is located in the root, type Root relative path as '.'");
                                 System.out.println("If you want to export a file located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                System.out.println("Enter 'Export Location Absolute Path' and 'The File Relative Path'");
+                                System.out.println("Enter 'The File Relative Path' and 'Export Location Absolute Path'");
                                 inLine = in.nextLine();
-                                String[] inLineSplit = inLine.split(" ");
+                                String[] inLineSplit = inLine.split(" |\\t");
 
                                 if (inLineSplit.length != 2) {
                                     System.out.println("Invalid argument, try again.");
@@ -190,6 +187,7 @@ public class StorageTester {
                     System.out.println(menu1);
                 } catch (Exception e){
                     System.out.println(e.getMessage());
+                    System.out.println(menu1);
                 }
             }
         } else {
@@ -232,157 +230,157 @@ public class StorageTester {
 
             System.out.println(menu1);
 
-                while (true) {
-                    try {
-                        String inLine = in.nextLine();
-                        switch (inLine) {
-                            case "1":
-                                while (true) {
-                                    System.out.println("If you want to create a folder in the root directory, type Root relative path as '.'");
-                                    System.out.println("If you want to create a folder in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The Folder Name' and 'The Folder Relative Path'  separated by a space.");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+            while (true) {
+                try {
+                    String inLine = in.nextLine();
+                    switch (inLine) {
+                        case "1":
+                            while (true) {
+                                System.out.println("If you want to create a folder in the root directory, type Root relative path as '.'");
+                                System.out.println("If you want to create a folder in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The Folder Name' and 'The Folder Relative Path'  separated by a space.");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.createFolder(inLineSplit[0], inLineSplit[1]))
-                                        System.out.println("Folder created successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.createFolder(inLineSplit[0], inLineSplit[1])) {
+                                    System.out.println("Folder created successfully.");
+                                }
+
                                 break;
-                            case "2":
-                                while (true) {
-                                    System.out.println("If you want to create a file in the root directory, type Root relative path as '.'");
-                                    System.out.println("If you want to create a file in the  subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The File Name' and 'The File Relative Path' separated by a space.");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "2":
+                            while (true) {
+                                System.out.println("If you want to create a file in the root directory, type Root relative path as '.'");
+                                System.out.println("If you want to create a file in the  subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The File Name' and 'The File Relative Path' separated by a space.");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.createFile(inLineSplit[0], inLineSplit[1]))
-                                        System.out.println("File created successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.createFile(inLineSplit[0], inLineSplit[1])) {
+                                    System.out.println("File created successfully.");
+                                }
+
                                 break;
-                            case "3":
-                                while (true) {
-                                    System.out.println("If you want to move a file located in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to move a file in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to move a file between the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The OLD File Relative Path' and 'The New File Relative Path' separated by a space.");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "3":
+                            while (true) {
+                                System.out.println("If you want to move a file , type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The OLD File Relative Path' and 'The New File Relative Path' separated by a space.");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.moveFile(inLineSplit[0], inLineSplit[1]))
-                                        System.out.println("File moved successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.moveFile(inLineSplit[0], inLineSplit[1]))
+                                    System.out.println("File moved successfully.");
+
                                 break;
-                            case "4":
-                                while (true) {
-                                    System.out.println("If you want to rename a file object located in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to rename a file object located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The New Name' and 'The Relative Path' separated by a space.");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "4":
+                            while (true) {
+                                System.out.println("If you want to rename the root, type Root relative path as '.'");
+                                System.out.println("If you want to rename a file object located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The New Name' and 'The Relative Path' separated by a space.");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.renameFileObject(inLineSplit[0], inLineSplit[1]))
-                                        System.out.println("File Object renamed successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.renameFileObject(inLineSplit[0], inLineSplit[1]))
+                                    System.out.println("File Object renamed successfully.");
+
                                 break;
-                            case "5":
-                                while (true) {
-                                    System.out.println("If you want to delete a file object located in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to delete a file object located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The File Object Relative Path' ");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "5":
+                            while (true) {
+                                System.out.println("If you want to delete a file object, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The File Object Relative Path' ");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 1) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.deleteFileObject(inLineSplit[0]))
-                                        System.out.println("File Object deleted successfully.");
-
+                                if (inLineSplit.length != 1) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.deleteFileObject(inLineSplit[0]))
+                                    System.out.println("File Object deleted successfully.");
+
                                 break;
-                            case "6":
-                                while (true) {
-                                    System.out.println("If you want to import a files, type File absolute path. If you want multiple files to import separate with ','");
-                                    System.out.println("If you want to import a files in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to import a file in storage located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'The File/s Absolute Path' and 'Relative Path in Storage'");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "6":
+                            while (true) {
+                                System.out.println("If you want to import a files, type File absolute path. If you want multiple files to import separate with ','");
+                                System.out.println("If you want to import a files in the root, type Root relative path as '.'");
+                                System.out.println("If you want to import a file in root located somewhere in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The File/s Absolute Path' and 'Relative Path in Storage'");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.importFileObject(inLineSplit[0].split(","), inLineSplit[1]))
-                                        System.out.println("File/s imported successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
+
+                                if (st.importFileObject(inLineSplit[0].split(","), inLineSplit[1]))
+                                    System.out.println("File/s imported successfully.");
+
                                 break;
-                            case "7":
-                                while (true) {
-                                    System.out.println("If you want to export a file, type absolute path where you want to export your file");
-                                    System.out.println("If the file is located in the root, type Root relative path as '.'");
-                                    System.out.println("If you want to export a file located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                    System.out.println("Enter 'Export Location Absolute Path' and 'The File Relative Path'");
-                                    inLine = in.nextLine();
-                                    String[] inLineSplit = inLine.split(" ");
+                            }
+                            break;
+                        case "7":
+                            while (true) {
+                                System.out.println("If you want to export a file, type absolute path where you want to export your file");
+                                System.out.println("If the file is located in the root, type Root relative path as '.'");
+                                System.out.println("If you want to export a file located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Enter 'The File Relative Path' and 'Export Location Absolute Path'");
+                                inLine = in.nextLine();
+                                String[] inLineSplit = inLine.split(" |\\t");
 
-                                    if (inLineSplit.length != 2) {
-                                        System.out.println("Invalid argument, try again.");
-                                        break;
-                                    }
-
-                                    if (st.exportFileObject(inLineSplit[0], inLineSplit[1]))
-                                        System.out.println("File exported successfully.");
-
+                                if (inLineSplit.length != 2) {
+                                    System.out.println("Invalid argument, try again.");
                                     break;
                                 }
-                                break;
-                            case "15":
-                                System.out.println("Program successfully finished.");
-                                System.exit(0);
-                                break;
-                        }
 
-                        System.out.println(menu1);
-                    } catch (Exception e){
-                        System.out.println(e.getMessage());
+                                if (st.exportFileObject(inLineSplit[0], inLineSplit[1]))
+                                    System.out.println("File exported successfully.");
+
+                                break;
+                            }
+                            break;
+                        case "15":
+                            System.out.println("Program successfully finished.");
+                            System.exit(0);
+                            break;
                     }
+
+                    System.out.println(menu1);
+                } catch (Exception e){
+                    System.out.println(e.getMessage());
+                    System.out.println(menu1);
                 }
+            }
             }
         }
     }
