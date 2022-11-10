@@ -77,7 +77,7 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>libs/</classpathPrefix>
                             <mainClass>
-                                test.StorageTester
+                                sk_projekat1.StorageTester
                             </mainClass>
                         </manifest>
                     </archive>
