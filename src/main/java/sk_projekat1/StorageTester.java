@@ -247,6 +247,7 @@ public class StorageTester {
                                                 break;
                                             }
                                         }
+                                        break;
                                     case "2":
                                         System.out.println("Sort type:" +
                                                 "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
