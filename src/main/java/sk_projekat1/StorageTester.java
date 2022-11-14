@@ -14,14 +14,13 @@ public class StorageTester {
         }
 
         try {
-            Class.forName("sk_projekat1.ImplementationLocal");
-//            Class.forName("sk_projekat1.ImplementationDrive");
+//            Class.forName("sk_projekat1.ImplementationLocal");
+            Class.forName("sk_projekat1.ImplementationDrive");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         Storage st = StorageManager.getStorage();
-
 
         String menu1 = "Choose an option:" +
                 "\n\t1. Create folder" +
@@ -56,7 +55,7 @@ public class StorageTester {
                             while (true) {
                                 System.out.println("If you want to create a folder in the root directory, type Root relative path as '.'");
                                 System.out.println("If you want to create a folder in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
-                                System.out.println("Enter 'The Folder Name' and 'The Folder Relative Path'  separated by a space.");
+                                System.out.println("Enter 'The Folder Name' and 'The Folder Relative Path' separated by a space.");
                                 inLine = in.nextLine();
                                 String[] inLineSplit = inLine.split("[ \\t]");
 
@@ -193,286 +192,308 @@ public class StorageTester {
                                 inLine = in.nextLine();
                                 switch (inLine) {
                                     case "1":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        String sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        String filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 1) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 1) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
                                                     break;
                                                 }
-
-                                                st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "2":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 1) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 1) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "3":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "4":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "5":
-                                        System.out.println("INPUT ORDER: folderPath, fileName[]");
-                                        inLine = in.nextLine();
+                                        while (true) {
+                                            System.out.println("INPUT ORDER: folderPath, fileName[]");
+                                            inLine = in.nextLine();
 
-                                        String[] inLineSplit = inLine.split("[ \\t]");
-                                        if (inLineSplit.length <= 2) {
-                                            System.out.println("Invalid argument, try again.");
+                                            String[] inLineSplit = inLine.split("[ \\t]");
+                                            if (inLineSplit.length <= 2) {
+                                                System.out.println("Invalid argument, try again.");
+                                                break;
+                                            }
+
+                                            String inLineFolderPath = inLineSplit[0];
+                                            System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
+
+                                            System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
                                             break;
                                         }
-
-                                        String inLineFolderPath = inLineSplit[0];
-                                        System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
-
-                                        System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
                                         break;
                                     case "6":
-                                        System.out.println("INPUT ORDER: fileName");
-                                        inLine = in.nextLine();
+                                        while (true) {
+                                            System.out.println("INPUT ORDER: fileName");
+                                            inLine = in.nextLine();
 
-                                        inLineSplit = inLine.split("[ \\t]");
-                                        if (inLineSplit.length != 1) {
-                                            System.out.println("Invalid argument, try again.");
+                                            String[] inLineSplit = inLine.split("[ \\t]");
+                                            if (inLineSplit.length != 1) {
+                                                System.out.println("Invalid argument, try again.");
+                                                break;
+                                            }
+
+                                            System.out.println(st.findFileFolder(inLineSplit[0]));
                                             break;
                                         }
-
-                                        System.out.println(st.findFileFolder(inLineSplit[0]));
                                         break;
                                     case "7":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
-                                                inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
+                                                    inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
-                                                inLine = in.nextLine();
-                                                inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                 }
                                 break;
                             }
+                            break;
                         case "9":
                             System.out.println("Program successfully finished.");
                             System.exit(0);
@@ -672,285 +693,308 @@ public class StorageTester {
                                 inLine = in.nextLine();
                                 switch (inLine) {
                                     case "1":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        String sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        String filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 1) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 1) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
                                                     break;
                                                 }
-
-                                                st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
+                                        break;
                                     case "2":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 1) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 1) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "3":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "4":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION, MODIFIED_DATE, CREATED_DATE)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring");
-                                                inLine = in.nextLine();
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring");
+                                                    inLine = in.nextLine();
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 2) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 2) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring fileExtension");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring fileExtension");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
                                                     break;
                                                 }
+                                                case "MODIFIED_DATE":
+                                                case "CREATED_DATE": {
+                                                    System.out.println("INPUT ORDER: folderPath fileSubstring startDate endDate");
+                                                    inLine = in.nextLine();
 
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
-                                                break;
-                                            }
-                                            case "MODIFIED_DATE":
-                                            case "CREATED_DATE": {
-                                                System.out.println("INPUT ORDER: folderPath fileSubstring startDate endDate");
-                                                inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                String[] inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                     case "5":
-                                        System.out.println("INPUT ORDER: folderPath, fileName[]");
-                                        inLine = in.nextLine();
+                                        while (true) {
+                                            System.out.println("INPUT ORDER: folderPath, fileName[]");
+                                            inLine = in.nextLine();
 
-                                        String[] inLineSplit = inLine.split("[ \\t]");
-                                        if (inLineSplit.length <= 2) {
-                                            System.out.println("Invalid argument, try again.");
+                                            String[] inLineSplit = inLine.split("[ \\t]");
+                                            if (inLineSplit.length <= 2) {
+                                                System.out.println("Invalid argument, try again.");
+                                                break;
+                                            }
+
+                                            String inLineFolderPath = inLineSplit[0];
+                                            System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
+
+                                            System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
                                             break;
                                         }
-
-                                        String inLineFolderPath = inLineSplit[0];
-                                        System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
-
-                                        System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
                                         break;
                                     case "6":
-                                        System.out.println("INPUT ORDER: fileName");
-                                        inLine = in.nextLine();
+                                        while (true) {
+                                            System.out.println("INPUT ORDER: fileName");
+                                            inLine = in.nextLine();
 
-                                        inLineSplit = inLine.split("[ \\t]");
-                                        if (inLineSplit.length != 1) {
-                                            System.out.println("Invalid argument, try again.");
+                                            String[] inLineSplit = inLine.split("[ \\t]");
+                                            if (inLineSplit.length != 1) {
+                                                System.out.println("Invalid argument, try again.");
+                                                break;
+                                            }
+
+                                            System.out.println(st.findFileFolder(inLineSplit[0]));
                                             break;
                                         }
-
-                                        System.out.println(st.findFileFolder(inLineSplit[0]));
                                         break;
                                     case "7":
-                                        System.out.println("Sort type:" +
-                                                "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
-                                        sortType = in.nextLine();
+                                        while (true) {
+                                            System.out.println("Sort type:" +
+                                                    "\n\t(null, ALPHABETICAL_ASC, ALPHABETICAL_DESC, CREATED_DATE_ASC, CREATED_DATE_DESC, MODIFIED_DATE_ASC, MODIFIED_DATE_DESC)");
+                                            String sortType = in.nextLine();
 
-                                        System.out.println("Filter type:" +
-                                                "\n\t(null, FILE_EXTENSION)");
-                                        filterType = in.nextLine();
+                                            System.out.println("Filter type:" +
+                                                    "\n\t(null, FILE_EXTENSION)");
+                                            String filterType = in.nextLine();
 
-                                        switch (filterType) {
-                                            case "null": {
-                                                System.out.println("INPUT ORDER: folderPath startDate endDate");
-                                                inLine = in.nextLine();
-                                                inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 3) {
-                                                    System.out.println("Invalid argument, try again.");
+                                            switch (filterType) {
+                                                case "null": {
+                                                    System.out.println("INPUT ORDER: folderPath startDate endDate");
+                                                    inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 3) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
+
+                                                    System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
                                                     break;
                                                 }
+                                                case "FILE_EXTENSION": {
+                                                    System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
+                                                    inLine = in.nextLine();
+                                                    String[] inLineSplit = inLine.split("[ \\t]");
+                                                    if (inLineSplit.length != 4) {
+                                                        System.out.println("Invalid argument, try again.");
+                                                        break;
+                                                    }
 
-                                                System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
-                                                break;
-                                            }
-                                            case "FILE_EXTENSION": {
-                                                System.out.println("INPUT ORDER: folderPath fileExtension startDate endDate");
-                                                inLine = in.nextLine();
-                                                inLineSplit = inLine.split("[ \\t]");
-                                                if (inLineSplit.length != 4) {
-                                                    System.out.println("Invalid argument, try again.");
+                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
                                                     break;
                                                 }
-
-                                                System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
-                                                break;
+                                                default: {
+                                                    System.out.println("Function not supported.");
+                                                    break;
+                                                }
                                             }
-                                            default: {
-                                                System.out.println("Function not supported.");
-                                                break;
-                                            }
+                                            break;
                                         }
                                         break;
                                 }
                                 break;
                             }
+                            break;
                         case "9":
                             System.out.println("Program successfully finished.");
                             System.exit(0);
