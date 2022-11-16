@@ -1,5 +1,6 @@
 package sk_projekat1;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class StorageTester {
@@ -212,7 +213,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -225,7 +236,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -239,7 +260,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -271,7 +302,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -284,7 +325,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -298,7 +349,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -330,7 +391,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
+                                                    List<String> files = st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -344,7 +415,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -376,7 +457,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -389,7 +480,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -403,7 +504,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -420,7 +531,7 @@ public class StorageTester {
                                             inLine = in.nextLine();
 
                                             String[] inLineSplit = inLine.split("[ \\t]");
-                                            if (inLineSplit.length <= 2) {
+                                            if (inLineSplit.length < 2) {
                                                 System.out.println("Invalid argument, try again.");
                                                 break;
                                             }
@@ -428,7 +539,13 @@ public class StorageTester {
                                             String inLineFolderPath = inLineSplit[0];
                                             System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
 
-                                            System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
+                                            System.out.println("\nSEARCH RESULT:");
+                                            if (st.existsInFolder(inLineFolderPath, inLineSplit)) {
+                                                System.out.println("All specified files do exist in " + inLineFolderPath + ".\n");
+                                            } else {
+                                                System.out.println("One or more specified files do not exist in " + inLineFolderPath + ".\n");
+                                            }
+
                                             break;
                                         }
                                         break;
@@ -443,7 +560,9 @@ public class StorageTester {
                                                 break;
                                             }
 
-                                            System.out.println(st.findFileFolder(inLineSplit[0]));
+                                            System.out.println("\nSEARCH RESULT:\n" +
+                                                    st.findFileFolder(inLineSplit[0]));
+
                                             break;
                                         }
                                         break;
@@ -461,13 +580,24 @@ public class StorageTester {
                                                 case "null": {
                                                     System.out.println("INPUT ORDER: folderPath startDate endDate");
                                                     inLine = in.nextLine();
+
                                                     String[] inLineSplit = inLine.split("[ \\t]");
                                                     if (inLineSplit.length != 3) {
                                                         System.out.println("Invalid argument, try again.");
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
+                                                    List<String> files = st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -479,7 +609,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -713,7 +853,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -726,7 +876,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -740,7 +900,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+                                                    List<String> files = st.searchFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -772,7 +942,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -785,7 +965,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -799,7 +989,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
+                                                    List<String> files = st.searchFilesInFolders(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -831,7 +1031,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null));
+                                                    List<String> files = st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -845,7 +1055,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchFilesWithExtensionInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -877,7 +1097,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -890,7 +1120,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], null, null);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "MODIFIED_DATE":
@@ -904,7 +1144,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchFilesWithSubstringInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], null, inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
@@ -921,7 +1171,7 @@ public class StorageTester {
                                             inLine = in.nextLine();
 
                                             String[] inLineSplit = inLine.split("[ \\t]");
-                                            if (inLineSplit.length <= 2) {
+                                            if (inLineSplit.length < 2) {
                                                 System.out.println("Invalid argument, try again.");
                                                 break;
                                             }
@@ -929,7 +1179,13 @@ public class StorageTester {
                                             String inLineFolderPath = inLineSplit[0];
                                             System.arraycopy(inLineSplit, 1, inLineSplit, 0, inLineSplit.length - 1);
 
-                                            System.out.println(st.existsInFolder(inLineFolderPath, inLineSplit));
+                                            System.out.println("\nSEARCH RESULT:");
+                                            if (st.existsInFolder(inLineFolderPath, inLineSplit)) {
+                                                System.out.println("All specified files do exist in " + inLineFolderPath + ".\n");
+                                            } else {
+                                                System.out.println("One or more specified files do not exist in " + inLineFolderPath + ".\n");
+                                            }
+
                                             break;
                                         }
                                         break;
@@ -944,7 +1200,9 @@ public class StorageTester {
                                                 break;
                                             }
 
-                                            System.out.println(st.findFileFolder(inLineSplit[0]));
+                                            System.out.println("\nSEARCH RESULT:\n" +
+                                                    st.findFileFolder(inLineSplit[0]));
+
                                             break;
                                         }
                                         break;
@@ -962,13 +1220,24 @@ public class StorageTester {
                                                 case "null": {
                                                     System.out.println("INPUT ORDER: folderPath startDate endDate");
                                                     inLine = in.nextLine();
+
                                                     String[] inLineSplit = inLine.split("[ \\t]");
                                                     if (inLineSplit.length != 3) {
                                                         System.out.println("Invalid argument, try again.");
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]));
+                                                    List<String> files = st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, null, inLineSplit[1], inLineSplit[2]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 case "FILE_EXTENSION": {
@@ -980,7 +1249,17 @@ public class StorageTester {
                                                         break;
                                                     }
 
-                                                    System.out.println(st.searchFilesInFolders(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]));
+                                                    List<String> files = st.searchModifiedFilesInFolder(inLineSplit[0], sortType, filterType, inLineSplit[1], inLineSplit[2], inLineSplit[3]);
+
+                                                    System.out.println("\nSEARCH RESULT:");
+                                                    if (files != null) {
+                                                        for (String file : files) {
+                                                            System.out.println(file + "\n");
+                                                        }
+                                                    } else {
+                                                        System.out.println("No such files were found.");
+                                                    }
+
                                                     break;
                                                 }
                                                 default: {
