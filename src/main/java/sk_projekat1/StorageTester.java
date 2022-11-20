@@ -43,7 +43,8 @@ public class StorageTester {
                 "\n\t4. Search files with a substring in a folder" +
                 "\n\t5. Check if a file exists in a folder" +
                 "\n\t6. Find the folder for a given file" +
-                "\n\t7. Search modified files in a folder for a given date";
+                "\n\t7. Search modified files in a folder for a given date" +
+                "\n\tNOTE: YYYY-MM-DD is the actual date format";
 
         String path = args[0];
         if (StorageManager.existsStorage(path)) {
