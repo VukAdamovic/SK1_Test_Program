@@ -15,8 +15,8 @@ public class StorageTester {
         }
 
         try {
-//            Class.forName("sk_projekat1.ImplementationLocal");
-            Class.forName("sk_projekat1.ImplementationDrive");
+            Class.forName("sk_projekat1.ImplementationLocal");
+           // Class.forName("sk_projekat1.ImplementationDrive");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -171,8 +171,7 @@ public class StorageTester {
                         case "7":
                             while (true) {
                                 System.out.println("If you want to export a file, type absolute path where you want to export your file");
-                                System.out.println("If the file is located in the root, type Root relative path as '.'");
-                                System.out.println("If you want to export a file located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Type Root relative path as '.' or  Type relative path as '/' At The BEGINNING and BETWEEN directories for Files. ");
                                 System.out.println("Enter 'The File Relative Path' and 'Export Location Absolute Path'");
                                 inLine = in.nextLine();
                                 String[] inLineSplit = inLine.split("[ \\t]");
@@ -811,8 +810,7 @@ public class StorageTester {
                         case "7":
                             while (true) {
                                 System.out.println("If you want to export a file, type absolute path where you want to export your file");
-                                System.out.println("If the file is located in the root, type Root relative path as '.'");
-                                System.out.println("If you want to export a file located in the subfolders, type relative path as '/' At The BEGINNING and BETWEEN directories.");
+                                System.out.println("Type Root relative path as '.' or  Type relative path as '/' At The BEGINNING and BETWEEN directories for Files. ");
                                 System.out.println("Enter 'The File Relative Path' and 'Export Location Absolute Path'");
                                 inLine = in.nextLine();
                                 String[] inLineSplit = inLine.split("[ \\t]");
